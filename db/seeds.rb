@@ -8,8 +8,10 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+UserGame.destroy_all
 Friendship.destroy_all
 User.destroy_all
+Game.destroy_all
 
 user1 = User.create(username: "bob", email: "bob@turing.com", password: "ihateruby", avatar: "image1_string_goes_here.jpg")
 user2 = User.create(username: "rob", email: "rob@turing.com", password: "iloveruby", avatar: "image2_string_goes_here.jpg")
@@ -23,3 +25,15 @@ user8 = User.create(username: "chatgpt", email: "chatgpt@turing.com", password: 
 friendship1 = Friendship.create(user_id: user1.id, friend_id: user2.id)
 friendship1 = Friendship.create(user_id: user1.id, friend_id: user3.id)
 friendship1 = Friendship.create(user_id: user1.id, friend_id: user4.id)
+
+game1 = Game.create(game: "chess", avatar: "chess_image_string_goes_here.jpg")
+game2 = Game.create(game: "checkers", avatar: "checkers_image_string_goes_here.jpg")
+
+usergame1 = UserGame.create(user_id: user1.id, game_id: game1.id)
+usergame2 = UserGame.create(user_id: user2.id, game_id: game1.id)
+
+usergame3 = UserGame.create(user_id: user1.id, game_id: game1.id)
+usergame4 = UserGame.create(user_id: user3.id, game_id: game1.id)
+
+usergame5 = UserGame.create(user_id: user2.id, game_id: game1.id)
+usergame6 = UserGame.create(user_id: user3.id, game_id: game1.id)
