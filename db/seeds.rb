@@ -23,8 +23,12 @@ user7 = User.create(username: "jeff", email: "jeff@turing.com", password: "iownt
 user8 = User.create(username: "chatgpt", email: "chatgpt@turing.com", password: "robotoverlords", avatar: "image8_string_goes_here.jpg")
 
 friendship1 = Friendship.create(user_id: user1.id, friend_id: user2.id)
-friendship1 = Friendship.create(user_id: user1.id, friend_id: user3.id)
-friendship1 = Friendship.create(user_id: user1.id, friend_id: user4.id)
+friendship2 = Friendship.create(user_id: user1.id, friend_id: user3.id)
+friendship3 = Friendship.create(user_id: user1.id, friend_id: user4.id)
+
+friendship4 = Friendship.create(user_id: user2.id, friend_id: user3.id)
+friendship5 = Friendship.create(user_id: user2.id, friend_id: user4.id)
+friendship6 = Friendship.create(user_id: user2.id, friend_id: user5.id)
 
 game1 = Game.create(game: "chess", avatar: "chess_image_string_goes_here.jpg")
 game2 = Game.create(game: "checkers", avatar: "checkers_image_string_goes_here.jpg")
