@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :user_games
+  has_many :games, through: :user_games
   has_many :friendships
   has_many :friends, through: :friendships, source: :friend
 
