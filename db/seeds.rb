@@ -20,7 +20,6 @@ user4 = User.create(username: "jan", email: "jan@turing.com", password: "imabeas
 user5 = User.create(username: "kat", email: "kat@turing.com", password: "bestinstructorever", avatar: "image5_string_goes_here.jpg")
 user6 = User.create(username: "abdul", email: "abdul@turing.com", password: "kingofmod2", avatar: "image6_string_goes_here.jpg")
 user7 = User.create(username: "jeff", email: "jeff@turing.com", password: "iownthisshizz", avatar: "image7_string_goes_here.jpg")
-user8 = User.create(username: "chatgpt", email: "chatgpt@turing.com", password: "robotoverlords", avatar: "image8_string_goes_here.jpg")
 
 friendship1 = Friendship.create(user_id: user1.id, friend_id: user2.id)
 friendship2 = Friendship.create(user_id: user1.id, friend_id: user3.id)
