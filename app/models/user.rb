@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+# RELATIONSHIPS
   has_many :user_games
   has_many :games, through: :user_games
   has_many :friendships
@@ -6,6 +7,11 @@ class User < ApplicationRecord
 
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :inverse_friends, through: :inverse_friendships, source: :user
+
+# VALIDATIONS
+  validates :username, presence: true, uniqueness: { case_sensitive: false }
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
+  validates :password, presence: true
 
   def self.search(search_params)
     where("username LIKE ?", "%#{search_params}%")
