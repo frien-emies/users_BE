@@ -1,4 +1,4 @@
-class NoMatchFound 
+class NoMatchFoundSerializer 
   def self.no_match
     {
     "error": {

@@ -1,0 +1,50 @@
+# This config was automatically generated from your source code
+# Stacks detected: deps:ruby:.
+version: 2.1
+orbs:
+  ruby: circleci/ruby@2.0.1
+jobs:
+  test-ruby:
+    # Install gems, run rspec tests
+    docker:
+    - image: cimg/ruby:3.2.2 # if you're using ruby version >= 3.0, use cimg/ruby:3.x.y
+      environment: # environment variables for primary container
+          BUNDLE_JOBS: 3
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+          PGHOST: 127.0.0.1
+          PGUSER: postgres
+          RAILS_ENV: test
+    - image: circleci/postgres:11 # database image
+      environment: # environment variables for database, it is kind of obvious but it is important that they match with your test config in database.yml
+          POSTGRES_USER: postgres
+          POSTGRES_DB: frienemies_users_be_test
+          POSTGRES_HOST_AUTH_METHOD: trust
+    steps:
+      - checkout
+      - ruby/install-deps
+      - run:
+          name: wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Database setup
+          command: bundle exec rake db:test:prepare
+      - run:
+          name: rspec test
+          command: bundle exec rspec
+  deploy:
+    # This is an example deploy job, not actually used by the workflow
+    docker:
+      - image: cimg/base:stable
+    steps:
+      # Replace this with steps to deploy to users
+      - run:
+          name: deploy
+          command: '#e.g. ./deploy.sh'
+workflows:
+  build-and-test:
+    jobs:
+      - test-ruby
+    # - deploy:
+    #     requires:
+    #       - test-ruby
