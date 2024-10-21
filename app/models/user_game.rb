@@ -4,5 +4,5 @@ class UserGame < ApplicationRecord
   belongs_to :game
 
 # ENUM
-  enum status: { white: 1, black: 2 }
+  enum player_id: { white: 1, black: 2 }
 end

@@ -29,14 +29,16 @@ friendship4 = Friendship.create(user_id: user2.id, friend_id: user3.id)
 friendship5 = Friendship.create(user_id: user2.id, friend_id: user4.id)
 friendship6 = Friendship.create(user_id: user2.id, friend_id: user5.id)
 
-game1 = Game.create(game: "chess", avatar: "chess_image_string_goes_here.jpg")
-game2 = Game.create(game: "checkers", avatar: "checkers_image_string_goes_here.jpg")
+game1 = Game.create(game: "chess", avatar: "chess_image_string_goes_here.jpg", status: 0) # active
+game2 = Game.create(game: "chess", avatar: "chess_image_string_goes_here.jpg", status: 0) # active
+game3 = Game.create(game: "chess", avatar: "chess_image_string_goes_here.jpg", status: 0) # active
+game4 = Game.create(game: "checkers", avatar: "checkers_image_string_goes_here.jpg", status: 0) # inactive
 
-usergame1 = UserGame.create(user_id: user1.id, game_id: game1.id)
-usergame2 = UserGame.create(user_id: user2.id, game_id: game1.id)
+usergame1 = UserGame.create(user_id: user1.id, game_id: game1.id, player_id: 1)
+usergame2 = UserGame.create(user_id: user2.id, game_id: game1.id, player_id: 2)
 
-usergame3 = UserGame.create(user_id: user1.id, game_id: game1.id)
-usergame4 = UserGame.create(user_id: user3.id, game_id: game1.id)
+usergame3 = UserGame.create(user_id: user1.id, game_id: game2.id, player_id: 1)
+usergame4 = UserGame.create(user_id: user3.id, game_id: game2.id, player_id: 2)
 
-usergame5 = UserGame.create(user_id: user2.id, game_id: game1.id)
-usergame6 = UserGame.create(user_id: user3.id, game_id: game1.id)
+usergame5 = UserGame.create(user_id: user2.id, game_id: game3.id, player_id: 1)
+usergame6 = UserGame.create(user_id: user3.id, game_id: game3.id, player_id: 2)
