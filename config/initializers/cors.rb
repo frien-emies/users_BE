@@ -9,7 +9,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     origins '*'
     # origins "https://users-fe-app.vercel.app/"
-    # "/var/run/postgresql/.s.PGSQL.5432"
+    # "/var/run/postgresql/.s.PGSQL.5432" OR "tcp://localhost:5432"
 
     resource "*",
       headers: :any,
