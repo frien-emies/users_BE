@@ -6,5 +6,6 @@ class Game < ApplicationRecord
 # VALIDATIONS
   validates :game, presence: true
 
+# ENUM
   enum status: { active: 0, inactive: 1 }
 end
