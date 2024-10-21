@@ -1,7 +1,10 @@
 class Api::V1::UsersController < ApplicationController
-
   def index
-    users = User.search(params[:query])
-    render json: UserSerializer.new(users)
+    users = User.all
+    if users.length < 1
+      render json: { "errors": "There are currently no users in the database." }, status: 400
+    else
+      render json: UserSerializer.index_json(users), status: 200
+    end
   end
 end
