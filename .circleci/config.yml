@@ -7,13 +7,26 @@ jobs:
   test-ruby:
     # Install gems, run rspec tests
     docker:
-      - image: cimg/ruby:3.2.2-node
-      - image: circleci/postgres:9.5-alpine
-    environment:
-      RAILS_ENV: test
-      POSTGRES_USER: postgres
-      POSTGRES_DB: frienemies_users_be_test
-      POSTGRES_HOST_AUTH_METHOD: trust
+    - image: cimg/ruby:3.2.2 # if you're using ruby version >= 3.0, use cimg/ruby:3.x.y
+      environment: # environment variables for primary container
+          BUNDLE_JOBS: 3
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+          PGHOST: 127.0.0.1
+          PGUSER: postgres
+          RAILS_ENV: test
+    - image: circleci/postgres:9.5-alpine # database image
+      environment: # environment variables for database, it is kind of obvious but it is important that they match with your test config in database.yml
+          POSTGRES_USER: postgres
+          POSTGRES_DB: frienemies_users_be_test
+          POSTGRES_HOST_AUTH_METHOD: trust
+    #   - image: cimg/ruby:3.2.2-node
+    #   - image: circleci/postgres:9.5-alpine
+    # environment:
+    #   RAILS_ENV: test
+    #   POSTGRES_USER: postgres
+    #   POSTGRES_DB: frienemies_users_be_test
+    #   POSTGRES_HOST_AUTH_METHOD: trust
     steps:
       - checkout
       - ruby/install-deps
