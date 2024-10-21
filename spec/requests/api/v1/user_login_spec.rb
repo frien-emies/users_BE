@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'User Login Request', type: :request do
 ### - HAPPY PATH >:) - ###
   it "successfully creates" do
-    user = User.create(username: "bob", email: "bob@turing.com", password: "ihateruby", avatar: "image1_string_goes_here.jpg")
+    user = User.create(username: "bob", email: "bob@turing.com", password: "ihateruby", avatar: "app/assets/images/baby.jpg")
 
     post "/api/v1/sessions", params: { email: user.email, password: user.password } 
 
@@ -33,7 +33,7 @@ RSpec.describe 'User Login Request', type: :request do
 
 ### - SAD PATH >:C - ###
   it "renders and error json if there is no email in the database" do
-    user = User.create(username: "bob", email: "bob@turing.com", password: "ihateruby", avatar: "image1_string_goes_here.jpg")
+    user = User.create(username: "bob", email: "bob@turing.com", password: "ihateruby", avatar: "app/assets/images/baby.jpg")
 
     post "/api/v1/sessions", params: { email: "billybob@farmersonly.com", password: user.password } 
 
@@ -47,7 +47,7 @@ RSpec.describe 'User Login Request', type: :request do
   end
 
   it "renders an error json if the passwords do not match" do
-    user = User.create(username: "bob", email: "bob@turing.com", password: "ihateruby", avatar: "image1_string_goes_here.jpg")
+    user = User.create(username: "bob", email: "bob@turing.com", password: "ihateruby", avatar: "app/assets/images/baby.jpg")
 
     post "/api/v1/sessions", params: { email: user.email, password: "ihateruby321" } 
 
@@ -61,7 +61,7 @@ RSpec.describe 'User Login Request', type: :request do
   end
 
   it "renders an error json if no email is inputted" do
-    user = User.create(username: "bob", email: "bob@turing.com", password: "ihateruby", avatar: "image1_string_goes_here.jpg")
+    user = User.create(username: "bob", email: "bob@turing.com", password: "ihateruby", avatar: "app/assets/images/baby.jpg")
 
     post "/api/v1/sessions", params: { email: "", password: "iloveruby123" } 
 
@@ -75,7 +75,7 @@ RSpec.describe 'User Login Request', type: :request do
   end
 
   it "renders an error json if no password is inputted" do
-    user = User.create(username: "bob", email: "bob@turing.com", password: "ihateruby", avatar: "image1_string_goes_here.jpg")
+    user = User.create(username: "bob", email: "bob@turing.com", password: "ihateruby", avatar: "app/assets/images/baby.jpg")
 
     post "/api/v1/sessions", params: { email: user.email, password: "" } 
 
