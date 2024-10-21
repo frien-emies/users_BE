@@ -11,7 +11,8 @@ Rails.application.routes.draw do
 
   namespace :api do 
     namespace :v1 do 
-      get "/users/search", to: "users#index"
+      resources :users, only: [:index]
+      get "/users/search", to: "users_search#index"
     end
   end
 end
