@@ -26,7 +26,7 @@ RSpec.describe 'Users Index', type: :request do
         expect(user[:type]).to be_a(String)
 
         expect(user).to have_key(:id)
-        expect(user[:id]).to be_an(Integer)
+        expect(user[:id]).to be_a(String)
 
         expect(user).to have_key(:attributes)
         expect(user[:attributes]).to be_a(Hash)
@@ -44,7 +44,7 @@ RSpec.describe 'Users Index', type: :request do
       user1 = json.first
       
       expect(user1[:type]).to eq("user")
-      expect(user1[:id]).to eq(@user1.id)
+      expect(user1[:id]).to eq(@user1.id.to_s)
       expect(user1[:attributes][:username]).to eq(@user1.username)
       expect(user1[:attributes][:email]).to eq(@user1.email)
       expect(user1[:attributes][:avatar]).to eq(@user1.avatar)

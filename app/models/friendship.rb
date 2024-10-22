@@ -1,7 +1,9 @@
 class Friendship < ApplicationRecord
+# RELATIONSHIPS
   belongs_to :user
   belongs_to :friend, class_name: 'User'
   
+# VALIDATIONS
   validates :user_id, uniqueness: { scope: :friend_id }
   validate :not_self
 
