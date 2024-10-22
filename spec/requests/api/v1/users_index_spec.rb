@@ -42,7 +42,7 @@ RSpec.describe 'Users Index', type: :request do
       end
 
       user1 = json.first
-      
+  
       expect(user1[:type]).to eq("user")
       expect(user1[:id]).to eq(@user1.id.to_s)
       expect(user1[:attributes][:username]).to eq(@user1.username)
