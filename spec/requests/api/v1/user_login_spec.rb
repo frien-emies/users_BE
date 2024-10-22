@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'User Login Request', type: :request do
 ### - HAPPY PATH >:) - ###
-  it "successfully creates" do
+  it "successfully logs in and returns a json response" do
     user = User.create(username: "bob", email: "bob@turing.com", password: "ihateruby", avatar: "app/assets/images/baby.jpg")
 
     post "/api/v1/sessions", params: { email: user.email, password: user.password } 

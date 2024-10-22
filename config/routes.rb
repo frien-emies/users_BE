@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       resources :users, only: [:index]
       get "/users/search", to: "users_search#index"
       post "/sessions", to: "sessions#create"
+      delete "/sessions", to: "sessions#destroy"
     end
   end
 end
