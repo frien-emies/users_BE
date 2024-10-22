@@ -16,4 +16,11 @@ class User < ApplicationRecord
   def self.search(search_params)
     where("username LIKE ?", "%#{search_params}%")
   end
+
+  def friends_list
+    list = []
+    list << self.friends
+    list << self.inverse_friends
+    list.flatten.uniq
+  end
 end
