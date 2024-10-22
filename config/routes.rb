@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     namespace :v1 do 
       resources :users, only: [:index]
       get "/users/search", to: "users_search#index"
+      post "/sessions", to: "sessions#create"
     end
   end
 end
