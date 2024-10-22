@@ -107,12 +107,11 @@ RSpec.describe 'Users Index', type: :request do
     end
 
     it "can return a friends list for someone with only inverse friends" do
-      
       get "/api/v1/users/12345678/friends"
       expect(response.status).to eq 400
 
       json = JSON.parse(response.body, symbolize_names: true)
-      
+
       expect(json).to have_key(:errors)
       expect(json[:errors]).to be_a(String)
       expect(json[:errors]).to eq("Could not load friends list for this user.")
