@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       post "/sessions", to: "sessions#create"
       delete "/sessions", to: "sessions#destroy"
 
+      post "users/:id/add_friend", to: "add_friend#create"
     end
   end
 end
