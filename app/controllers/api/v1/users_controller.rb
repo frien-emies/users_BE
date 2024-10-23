@@ -4,7 +4,7 @@ class Api::V1::UsersController < ApplicationController
     if users.length < 1
       render json: { "errors": "There are currently no users in the database." }, status: 400
     else
-      render json: UserSerializer.new(users), status: 200
+      render json: UserSerializer.index_json(users), status: 200
     end
   end
 end
