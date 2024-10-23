@@ -5,7 +5,7 @@ Friendship.destroy_all
 User.destroy_all
 Game.destroy_all
 
-user1 = User.create(username: "bob", email: "bob@turing.com", password: "ihateruby", avatar: "baby.jpg")
+user1 = User.create(username: "bob", email: "bob@turing.com", password: "ihateruby", avatar: "https://img.freepik.com/premium-photo/cartoon-skeleton-playing-chess-with-hat-it_406811-60002.jpg?semt=ais_hybrid")
 user2 = User.create(username: "rob", email: "rob@turing.com", password: "iloveruby", avatar: "app/assets/images/queen.jpg")
 user3 = User.create(username: "knob", email: "knob@turing.com", password: "iworshipruby", avatar: "app/assets/images/elephant.jpg")
 user4 = User.create(username: "jan", email: "jan@turing.com", password: "imabeast", avatar: "app/assets/images/dog.jpg")

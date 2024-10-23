@@ -15,7 +15,7 @@ class UserSerializer
           "attributes": {
             "username": user.username,
             "email": user.email,
-            "avatar": "app/assets/images/(user.avatar)"
+            "avatar": user.avatar
           }
         }
       end
