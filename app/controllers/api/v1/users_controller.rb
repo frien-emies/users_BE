@@ -9,8 +9,17 @@ class Api::V1::UsersController < ApplicationController
       else
         render json: UserSerializer.new(users), status: 200
       end
-    rescue ActiveRecord::RecordInvalid => exception
+    rescue ActiveRecord::RecordNotFound => exception
       render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 400)).serialize_json, status: 400
+    end
+  end
+
+  def show
+    user = User.find_by(id: params[:id])
+    if user
+      render json: UserSerializer.new(user), status: 200
+    else
+      render json: { "errors": "User not found." }, status: 404
     end
   end
 end

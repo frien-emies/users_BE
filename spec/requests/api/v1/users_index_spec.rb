@@ -43,7 +43,7 @@ RSpec.describe 'Users Index', type: :request do
     end
   end
   
-  describe 'returns users data - happy paths' do
+  describe 'returns users data - sad paths' do
     it "returns error handling if there are no users" do
       get "/api/v1/users/1/index"
       expect(response.status).to eq 400

@@ -11,8 +11,9 @@ Rails.application.routes.draw do
 
   namespace :api do 
     namespace :v1 do 
-      get "/users/:id/index", to: "users#index"
       get "/users/search", to: "users_search#index"
+      get "/users/:id/index", to: "users#index"
+      get "/users/:id", to: "users#show"
       get "users/:id/friends", to: "friends#index"
 
       post "/sessions", to: "sessions#create"
