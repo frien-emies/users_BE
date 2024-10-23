@@ -13,12 +13,12 @@ RSpec.describe 'Users Index', type: :request do
     end
 
     it "can return an index of all users in the database" do
-      get "/api/v1/users"
+      get "/api/v1/users/#{@user1.id}/index"
       expect(response.status).to eq 200
 
       json = JSON.parse(response.body, symbolize_names: true)[:data]
 
-      expect(json.length).to eq(7)
+      expect(json.length).to eq(6)
       expect(json).to be_an(Array)
 
       json.each do |user|
@@ -40,20 +40,12 @@ RSpec.describe 'Users Index', type: :request do
         expect(user[:attributes]).to have_key(:avatar)
         expect(user[:attributes][:avatar]).to be_a(String)
       end
-
-      user1 = json.first
-  
-      expect(user1[:type]).to eq("user")
-      # expect(user1[:id].to_i).to eq(@user1.id)
-      # expect(user1[:attributes][:username]).to eq(@user1.username)
-      # expect(user1[:attributes][:email]).to eq(@user1.email)
-      # expect(user1[:attributes][:avatar]).to eq(@user1.avatar)
     end
   end
   
   describe 'returns users data - happy paths' do
     it "returns error handling if there are no users" do
-      get "/api/v1/users"
+      get "/api/v1/users/1/index"
       expect(response.status).to eq 400
 
       json = JSON.parse(response.body, symbolize_names: true)
