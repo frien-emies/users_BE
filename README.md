@@ -20,7 +20,7 @@ To run the tests for this repository, simply run `bundle exec rspec spec` from t
 # API Endpoints
 ## Users Index
 ### Endpoint:
-  - GET https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/api/v1/users
+  - GET https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/api/v1/users/user_id/index
 ### Response:
 {
   "data": [
@@ -88,6 +88,22 @@ To run the tests for this repository, simply run `bundle exec rspec spec` from t
       }
     }
   ]
+}
+
+## User Show
+### Endpoint:
+  - GET https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/api/v1/users/user_id
+### Response:
+{
+  "data": {
+    "type": "user",
+    "id": 1,
+    "attributes": {
+      "email": "bob@turing.com",
+      "username": "bob",
+      "avatar": "app/assets/images/baby.jpg"
+    }
+  }
 }
 
 ## Users Search
