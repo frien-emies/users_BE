@@ -6,7 +6,7 @@ User.destroy_all
 Game.destroy_all
 
 user1 = User.create(username: "bob", email: "bob@turing.com", password: "ihateruby", avatar: "https://img.freepik.com/premium-photo/cartoon-skeleton-playing-chess-with-hat-it_406811-60002.jpg?semt=ais_hybrid")
-user2 = User.create(username: "rob", email: "rob@turing.com", password: "iloveruby", avatar: "public/images/queen.jpg")
+user2 = User.create(username: "rob", email: "rob@turing.com", password: "iloveruby", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/queen.jpg")
 user3 = User.create(username: "knob", email: "knob@turing.com", password: "iworshipruby", avatar: "public/images/elephant.jpg")
 user4 = User.create(username: "jan", email: "jan@turing.com", password: "imabeast", avatar: "public/images/dog.jpg")
 user5 = User.create(username: "kat", email: "kat@turing.com", password: "bestinstructorever", avatar: "public/images/cat.jpg")
