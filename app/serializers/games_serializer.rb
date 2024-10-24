@@ -1,20 +1,17 @@
 class GamesSerializer
   def self.games_json(games)
     {
-      "data": {
-    "resources": [
-      { "game_id": 1,
-        "game": "chess", 
-        "status": "active/inactive",
-        "avatar": "fileName/Path"
-      },
-      {  "game_id": 2,
-        "game": "chess",
-        "status": "active/inactive",
-        "avatar": "fileName/Path"
+      "data": games.map do |game|
+        {
+          "type": "game",
+          "id": game.id,
+          "attributes": {
+            "game": game.game, 
+            "status": game.status,
+            "avatar": game.avatar
           }
-        ]
-      }
+        }
+      end
     }
   end
 end
