@@ -85,7 +85,7 @@ RSpec.describe 'User Login Request', type: :request do
     expect(json[:errors]).to eq("Could not create game.")
   end
 
-  it "fails to create a game and returns an error handling json response" do
+  it "fails to create a game with 3 users and returns an error handling json response" do
     user1 = User.create(username: "bob", email: "bob@turing.com", password: "ihateruby", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/baby.jpg")
     user2 = User.create(username: "rob", email: "rob@turing.com", password: "iloveruby", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/queen.jpg")
     user3 = User.create(username: "knob", email: "knob@turing.com", password: "iworshipruby", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/elephant.jpg")
