@@ -21,16 +21,19 @@ friendship4 = Friendship.create(user_id: user2.id, friend_id: user3.id)
 friendship5 = Friendship.create(user_id: user2.id, friend_id: user4.id)
 friendship6 = Friendship.create(user_id: user2.id, friend_id: user5.id)
 
-game1 = Game.create(game: "chess", avatar: "chess_image_string_goes_here.jpg", status: 0) # active
-game2 = Game.create(game: "chess", avatar: "chess_image_string_goes_here.jpg", status: 0) # active
-game3 = Game.create(game: "chess", avatar: "chess_image_string_goes_here.jpg", status: 0) # active
-game4 = Game.create(game: "checkers", avatar: "checkers_image_string_goes_here.jpg", status: 0) # inactive
+game1 = Game.create(game: "chess", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/chess_dab.jpg", status: 0) # active
+game2 = Game.create(game: "chess", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/chess_dab.jpg", status: 0) # active
+game3 = Game.create(game: "chess", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/chess_dab.jpg", status: 0) # active
+game4 = Game.create(game: "chess", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/chess_dab.jpg", status: 1) # inactive
 
-usergame1 = UserGame.create(user_id: user1.id, game_id: game1.id, player_id: 1)
-usergame2 = UserGame.create(user_id: user2.id, game_id: game1.id, player_id: 2)
+usergame1 = UserGame.create(user_id: user1.id, game_id: game1.id, player_id: 1) # active
+usergame2 = UserGame.create(user_id: user2.id, game_id: game1.id, player_id: 2) # active
 
-usergame3 = UserGame.create(user_id: user1.id, game_id: game2.id, player_id: 1)
-usergame4 = UserGame.create(user_id: user3.id, game_id: game2.id, player_id: 2)
+usergame3 = UserGame.create(user_id: user1.id, game_id: game2.id, player_id: 1) # active
+usergame4 = UserGame.create(user_id: user3.id, game_id: game2.id, player_id: 2) # active
 
-usergame5 = UserGame.create(user_id: user2.id, game_id: game3.id, player_id: 1)
-usergame6 = UserGame.create(user_id: user3.id, game_id: game3.id, player_id: 2)
+usergame5 = UserGame.create(user_id: user2.id, game_id: game3.id, player_id: 1) # active
+usergame6 = UserGame.create(user_id: user3.id, game_id: game3.id, player_id: 2) # active
+
+usergame7 = UserGame.create(user_id: user1.id, game_id: game4.id, player_id: 1) # inactive
+usergame8 = UserGame.create(user_id: user3.id, game_id: game4.id, player_id: 2) # inactive
