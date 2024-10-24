@@ -16,6 +16,8 @@ Rails.application.routes.draw do
       get "/users/:id", to: "users#show"
       get "users/:id/friends", to: "friends#index"
 
+      get "users/:id/my_games", to: "users_games_search#index"
+
       post "/sessions", to: "sessions#create"
       delete "/sessions", to: "sessions#destroy"
 

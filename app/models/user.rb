@@ -25,4 +25,10 @@ class User < ApplicationRecord
     list << self.inverse_friends
     list.flatten.uniq
   end
+
+  def games_list
+    list = []
+    list << self.games
+    list.flatten.uniq
+  end
 end
