@@ -21,9 +21,9 @@ RSpec.describe "Games Index", type: :request do
       
       @friendship7 = Friendship.create(user_id: @user7.id, friend_id: @user1.id)
 
-      @game1 = Game.create(game: "chess", avatar: "chess_image_string_goes_here.jpg", status: 0) # active
-      @game2 = Game.create(game: "chess", avatar: "chess_image_string_goes_here.jpg", status: 0) # active
-      @game3 = Game.create(game: "chess", avatar: "chess_image_string_goes_here.jpg", status: 0) # active
+      @game1 = Game.create(game: "chess", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/chess_dab.jpg", status: 0) # active
+      @game2 = Game.create(game: "chess", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/chess_dab.jpg", status: 0) # active
+      @game3 = Game.create(game: "chess", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/chess_dab.jpg", status: 0) # active
       @game4 = Game.create(game: "checkers", avatar: "checkers_image_string_goes_here.jpg", status: 0) # inactive
 
       @usergame1 = UserGame.create(user_id: @user1.id, game_id: @game1.id, player_id: 1)
@@ -40,16 +40,32 @@ RSpec.describe "Games Index", type: :request do
       get "/api/v1/users/#{@user1.id}/my_games"
       expect(response.status).to eq 200
 
-      json = JSON.parse(response.body, symbolize_names: true)[:data][:resources]
+      json = JSON.parse(response.body, symbolize_names: true)[:data]
       expect(json.length).to eq(2)
 
       json.each do |game|
-        expect(game).to have_key(:game)
-        expect(game[:game]).to be_a(String)
-        expect(game[:game]).to eq("chess")
+        # binding.pry
+        expect(game).to have_key(:type)
+        expect(game[:type]).to be_a(String)
+        expect(game[:type]).to eq("game")
 
-        expect(game).to have_key(:status)
-        expect(game[:status]).to be_a(String)
+        expect(game).to have_key(:id)
+        expect(game[:id]).to be_an(Integer)
+
+        expect(game).to have_key(:attributes)
+        expect(game[:attributes]).to be_a(Hash)
+
+        expect(game[:attributes]).to have_key(:game)
+        expect(game[:attributes][:game]).to be_a(String)
+        expect(game[:attributes][:game]).to eq("chess")
+
+        expect(game[:attributes]).to have_key(:status)
+        expect(game[:attributes][:status]).to be_a(String)
+        expect(game[:attributes][:status]).to eq("active")
+
+        expect(game[:attributes]).to have_key(:avatar)
+        expect(game[:attributes][:avatar]).to be_a(String)
+        expect(game[:attributes][:avatar]).to eq("https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/chess_dab.jpg")
       end
     end
 

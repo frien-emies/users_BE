@@ -47,26 +47,7 @@ RSpec.describe 'Users Index', type: :request do
         expect(friend[:attributes][:avatar]).to be_a(String)
       end
 
-      user2 = json[0]
-      user3 = json[1]
-      user4 = json[2]
-      user7 = json[3] # inverse friend
-
-      expect(user2[:id]).to eq(@user2.id)
-      expect(user2[:attributes][:username]).to eq(@user2.username)
-      expect(user2[:attributes][:avatar]).to eq(@user2.avatar)
-
-      expect(user3[:id]).to eq(@user3.id)
-      expect(user3[:attributes][:username]).to eq(@user3.username)
-      expect(user3[:attributes][:avatar]).to eq(@user3.avatar)
-
-      expect(user4[:id]).to eq(@user4.id)
-      expect(user4[:attributes][:username]).to eq(@user4.username)
-      expect(user4[:attributes][:avatar]).to eq(@user4.avatar)
-
-      expect(user7[:id]).to eq(@user7.id)
-      expect(user7[:attributes][:username]).to eq(@user7.username)
-      expect(user7[:attributes][:avatar]).to eq(@user7.avatar)
+      expect(@user1.friends_list).to match_array([@user2, @user3, @user4, @user7])
     end
 
     it "can return a friends list for someone with only inverse friends" do
