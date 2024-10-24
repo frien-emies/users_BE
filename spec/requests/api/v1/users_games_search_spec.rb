@@ -44,7 +44,6 @@ RSpec.describe "Games Index", type: :request do
       expect(json.length).to eq(2)
 
       json.each do |game|
-        # binding.pry
         expect(game).to have_key(:type)
         expect(game[:type]).to be_a(String)
         expect(game[:type]).to eq("game")
