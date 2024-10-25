@@ -1,7 +1,7 @@
 class Api::V1::GamesController < ApplicationController
   def create
     user = User.find_by(id: params[:id])
-    friend = User.find_by(id: params[:black_player_id])
+    friend = User.find_by(id: params[:user_id])
     
     if user && friend
       new_game = ChessService.get_game_info(user, friend)
