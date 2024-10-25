@@ -45,16 +45,26 @@ RSpec.describe 'Users Index', type: :request do
   
   describe 'returns users data - sad paths' do
     it "returns error handling if there are no users" do
-      get "/api/v1/users/1/index"
+      user1 = User.create(username: "bob", email: "bob@turing.com", password: "ihateruby", avatar: "baby.jpg")
+      get "/api/v1/users/#{user1.id}/index"
+      expect(response.status).to eq 200
+
+      json = JSON.parse(response.body, symbolize_names: true)
+
+      expect(json).to have_key(:data)
+      expect(json[:data]).to be_an(Array)
+      expect(json[:data]).to eq([])
+    end
+
+    it "returns error handling if the user id in the path is invalid" do
+      get "/api/v1/users/12345678/index"
       expect(response.status).to eq 400
 
       json = JSON.parse(response.body, symbolize_names: true)
 
       expect(json).to have_key(:errors)
       expect(json[:errors]).to be_a(String)
-      expect(json[:errors]).to eq("There are currently no users in the database.")
+      expect(json[:errors]).to eq("You must be logged in or create an account.")
     end
   end
 end
-
-#test

@@ -1,17 +1,15 @@
 class Api::V1::UsersController < ApplicationController
   def index
-    begin
-      user = User.find_by(id: params[:id])
-      users = User.all
-      list = users - [user]
+    user = User.find_by(id: params[:id])
+    users = User.all
+    list = users - [user]
 
-      if users.length < 1 || user == nil
-        render json: { "errors": "There are currently no users in the database." }, status: 400
-      else
-        render json: UserSerializer.new(list), status: 200
-      end
-    rescue ActiveRecord::RecordNotFound => exception
-      render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 400)).serialize_json, status: 400
+    if user == nil
+      render json: { "errors": "You must be logged in or create an account." }, status: 400
+    elsif users.length < 1
+      render json: { "errors": "There are currently no users in the database." }, status: 400
+    else
+      render json: UserSerializer.new(list), status: 200
     end
   end
 
