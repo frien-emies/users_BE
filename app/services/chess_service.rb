@@ -10,7 +10,7 @@ class ChessService
         "black_player_id": friend.id,
         "white_player_user_name": user.username,
         "black_player_user_name": friend.username
-    }.to_json
+      }.to_json
     end
 
     JSON.parse(response.body, symbolize_names: true)

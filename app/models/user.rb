@@ -29,6 +29,6 @@ class User < ApplicationRecord
   def games_list
     list = []
     list << self.games
-    list.flatten.uniq
+    list.flatten
   end
 end
