@@ -14,7 +14,7 @@ RSpec.describe "Remove Friend" do
       expect(user1.friendships.count).to be 1
   
       headers = {"CONTENT_TYPE" => "application/json"}
-      delete "/api/v1/users/#{user1.id}/add_friend", params: JSON.generate(delete_body), headers: headers
+      delete "/api/v1/users/#{user1.id}/remove_friend", params: JSON.generate(delete_body), headers: headers
     
       expect(response).to be_successful
       expect(response.status).to be 201
