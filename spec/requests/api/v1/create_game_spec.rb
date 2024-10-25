@@ -92,11 +92,11 @@ RSpec.describe 'User Login Request', type: :request do
 
   it "fails to create a game with an invalid black id and returns an error handling json response" do
     wrong_body = {
-              "white_player_id": @user1.id, 
-              "black_player_id": 12345678, 
-              "white_player_user_name": @user1.username, 
-              "black_player_user_name": @user2.username
-            }
+                  "white_player_id": @user1.id, 
+                  "black_player_id": 12345678, 
+                  "white_player_user_name": @user1.username, 
+                  "black_player_user_name": @user2.username
+                }
 
     post "/api/v1/users/#{@user1.id}/start_game", params: wrong_body
 
@@ -111,7 +111,6 @@ RSpec.describe 'User Login Request', type: :request do
     post "/api/v1/users/#{@user1.id}/start_game", params: @body
 
     game = Game.last
-
     expect(game).to be_valid
     
     game.users << @user3
