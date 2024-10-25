@@ -1,7 +1,6 @@
 class ForecastFacade
   def self.get_game_state(game)
-    # coordinates = CoordinatesFacade.get_lat_lon(town)
-    # data = ForecastService.find_forecast(coordinates)
+    data = ChessService.get_game_info(game)
 
     # current_data = data[:current]
     # CurrentWeather.new(current_data)

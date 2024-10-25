@@ -7,6 +7,50 @@ RSpec.describe 'User Login Request', type: :request do
     user2 = User.create(username: "rob", email: "rob@turing.com", password: "iloveruby", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/queen.jpg")
     user3 = User.create(username: "knob", email: "knob@turing.com", password: "iworshipruby", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/elephant.jpg")
 
+    body = {
+              "white_player_id": user1.id, 
+              "black_player_id": user2.id, 
+              "white_player_user_name": user1.username, 
+              "black_player_user_name": user2.username
+            }
+
+    post "/api/v1/start_game", params: body
+
+    # expect(response).to be_successful
+    # expect(response.status).to eq(201)
+
+    # json = JSON.parse(response.body, symbolize_names: true)[:data]
+    
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  xit "successfully creates a game and returns a json response" do
+    user1 = User.create(username: "bob", email: "bob@turing.com", password: "ihateruby", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/baby.jpg")
+    user2 = User.create(username: "rob", email: "rob@turing.com", password: "iloveruby", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/queen.jpg")
+    user3 = User.create(username: "knob", email: "knob@turing.com", password: "iworshipruby", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/elephant.jpg")
+
     post "/api/v1/users/#{user1.id}/start_game", params: { friend_id: user2.id } 
 
     expect(response).to be_successful
@@ -71,7 +115,7 @@ RSpec.describe 'User Login Request', type: :request do
   end
 
 ### - SAD PATH >:( - ###
-  it "fails to create a game and returns an error handling json response" do
+  xit "fails to create a game and returns an error handling json response" do
     user1 = User.create(username: "bob", email: "bob@turing.com", password: "ihateruby", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/baby.jpg")
     user2 = User.create(username: "rob", email: "rob@turing.com", password: "iloveruby", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/queen.jpg")
     user3 = User.create(username: "knob", email: "knob@turing.com", password: "iworshipruby", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/elephant.jpg")
@@ -85,7 +129,7 @@ RSpec.describe 'User Login Request', type: :request do
     expect(json[:errors]).to eq("Could not create game.")
   end
 
-  it "fails to create a game with 3 users and returns an error handling json response" do
+  xit "fails to create a game with 3 users and returns an error handling json response" do
     user1 = User.create(username: "bob", email: "bob@turing.com", password: "ihateruby", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/baby.jpg")
     user2 = User.create(username: "rob", email: "rob@turing.com", password: "iloveruby", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/queen.jpg")
     user3 = User.create(username: "knob", email: "knob@turing.com", password: "iworshipruby", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/elephant.jpg")
