@@ -7,12 +7,7 @@ RSpec.describe 'User Login Request', type: :request do
     @user2 = User.create(username: "rob", email: "rob@turing.com", password: "iloveruby", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/queen.jpg")
     @user3 = User.create(username: "knob", email: "knob@turing.com", password: "iworshipruby", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/elephant.jpg")
 
-    @body = {
-              "white_player_id": @user1.id, 
-              "black_player_id": @user2.id, 
-              "white_player_user_name": @user1.username, 
-              "black_player_user_name": @user2.username
-            }
+    @body = { "user_id": @user2.id }
 
   end
   it "successfully creates a game and returns a json response" do
