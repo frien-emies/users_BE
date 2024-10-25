@@ -22,6 +22,8 @@ Rails.application.routes.draw do
       delete "/sessions", to: "sessions#destroy"
 
       post "users/:id/add_friend", to: "add_friend#create"
+      delete "users/:id/add_friend", to: "add_friend#destroy"
+
       post "users/:id/start_game", to: "games#create"
     end
   end

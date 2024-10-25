@@ -17,4 +17,17 @@ class Api::V1::AddFriendController < ApplicationController
       render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 404)).serialize_json, status: 404
     end
   end
+
+  def destroy 
+    user = User.find(params[:id])
+    friend = User.find(params[:user_id])
+
+    friendship1 = Friendship.find_by(user: user, friend: friend)
+    friendship2 = Friendship.find_by(user: friend, friend: user)
+
+    friendship1.delete
+    friendship2.delete
+
+    render json: { "data": "You've removed a friend!" }, status: 201
+  end
 end
