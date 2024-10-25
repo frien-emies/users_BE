@@ -22,9 +22,8 @@ friendship5 = Friendship.create(user_id: user2.id, friend_id: user4.id)
 friendship6 = Friendship.create(user_id: user2.id, friend_id: user5.id)
 
 game1 = Game.create(game: "chess", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/chess_dab.jpg", status: 0) # active
-game2 = Game.create(game: "chess", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/chess_dab.jpg", status: 0) # active
-game3 = Game.create(game: "chess", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/chess_dab.jpg", status: 0) # active
-game4 = Game.create(game: "chess", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/chess_dab.jpg", status: 1) # inactive
+game2 = Game.create(game: "chess", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/chessfight.jpg", status: 0) # active
+game3 = Game.create(game: "chess", avatar: "https://chess-with-frein-emies-e45d9fb62d80.herokuapp.com/images/chesslasers.jpg", status: 0) # active
 
 usergame1 = UserGame.create(user_id: user1.id, game_id: game1.id, player_id: 1) # active, white
 usergame2 = UserGame.create(user_id: user2.id, game_id: game1.id, player_id: 2) # active, black
@@ -34,6 +33,3 @@ usergame4 = UserGame.create(user_id: user1.id, game_id: game2.id, player_id: 2) 
 
 usergame5 = UserGame.create(user_id: user5.id, game_id: game3.id, player_id: 1) # active, white
 usergame6 = UserGame.create(user_id: user1.id, game_id: game3.id, player_id: 2) # active, black
-
-usergame7 = UserGame.create(user_id: user1.id, game_id: game4.id, player_id: 1) # inactive, white
-usergame8 = UserGame.create(user_id: user3.id, game_id: game4.id, player_id: 2) # inactive, black
