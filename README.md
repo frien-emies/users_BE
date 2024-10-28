@@ -10,8 +10,8 @@ for notes on deploying the project on a live system.
 You will need to have the Ruby 3.2.2 and Rails 7.1.4.
 
 ### Installing
-To install and use this repository on your local machine first clone down this repository, and clone down the [Users Backend Repository](https://github.com/frien-emies/users_BE).
-Navigate through the console so that your are in the directories of each application (you will need two terminals open).
+To install and use this repository on your local machine first clone down this repository, the [Users Backend Repository](https://github.com/frien-emies/users_BE).
+Navigate through the console so that your are in the directories of each application.
 Run `rails db:{drop,create,migrate,seed}` to establish the database. Then run `bundle install` to install all the gem dependencies. 
 
 ## Running the tests
